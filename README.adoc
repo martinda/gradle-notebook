@@ -1,7 +1,0 @@
-= Gradle Notebook
-
-This is the source code for Gradle Notebook website
-https://martinda.github.io/gradle-notebook
-
-This project is based on the https://github.com/asciidoctor/asciidoctor-gradle-plugin[Gradle AsciiDoctor Plugin].
-
