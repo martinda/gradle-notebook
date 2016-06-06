@@ -6,7 +6,9 @@ Martin d'Anjou <martin.danjou14@gmail.com>
 
 == Introduction
 
-I sometimes write notes on what I do. Here are some Gradle notes.
+I sometimes write notes on what I do. Here are some notes on Gradle.
+
+* Introduction: link:build-system[Software build system definition]
 
 == Tasks
 

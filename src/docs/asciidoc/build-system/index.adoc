@@ -1,0 +1,43 @@
+= Software Build Systems
+
+Here is a simple representation of a software build system:
+
+----
+                +---------------+
+input files --> + build process + --> output files
+                +---------------+
+----
+
+The build process can contain other build processes, and this can grow quite large:
+
+----
+                +---------------+
+input files --> + build process + --. // <1>
+                +---------------+   |         +---------------+
+                                    +-------->+ build process +--> output files
+                +---------------+   |         +---------------+
+input files --> + build process + --' // <2>
+                +---------------+
+----
+<1> Intermediate output files
+<2> Intermediate output files
+
+This can grow and fork in all kinds of directions depending on your domain. Not only can you
+use a build process to create files, but it can also be used to run tests.
+
+The characteristics of a traditional software build system are:
+
+* It can build files
+* It can run processes in parallel
+* It can chain build processes together (toolchains)
+* It can detect changes in pre-requisites and build incrementally
+
+Tools like GNU Make and Ant fall in this category.
+
+More modern build systems can also:
+
+* Fetch dependencies from a repository of pre-build artifacts
+* Publish output products to a repository for use by others
+
+Tools like Ivy+Ant, Maven and Gradle fall in this category.
+
