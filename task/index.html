@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Task page</title>
+<title>Task</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -511,14 +511,94 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article">
 <div id="header">
-<h1>Task page</h1>
+<h1>Task</h1>
 </div>
 <div id="content">
-
+<div class="paragraph">
+<p>If you come from a GNU Make background and you want to get started with Gradle, the first thing that comes to mind is the following diagram:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>                   +----------+
+pre-requisites --&gt; + commands +--&gt; target
+(the inputs)       +----------+    (the outputs)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or expressed as a GNU Make rule:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="makefile"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>target: pre-requisites
+        command
+        command
+        ...</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In GNU Make, the target is preferably and is usually a file. The pre-requisites is a list of files, and the commands are the recipe for creating the target. The whole rigmarole is called a <a href="https://www.gnu.org/software/make/manual/html_node/Rule-Example.html#Rule-Example">GNU Make rule</a>.</p>
+</div>
+<div class="paragraph">
+<p>In Gradle, rules translate to tasks. But Gradle tasks are more flexible than GNU Make rules. A simple task in Gradle looks like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>task myTask() {
+    doLast {
+        command
+        command
+        ...
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s implement a task that prints to the terminal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>task myTask() {
+    doLast {
+        println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Done</span><span class="delimiter">&quot;</span></span>)
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And we run the task with <code>gradle myTask</code>. You can run this task over and over, Gradle will never grow tired of running it. It is much like a <a href="https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html"><code>PHONY</code> target in GNU Make</a>.</p>
+</div>
+<div class="paragraph">
+<p>Next, let&#8217;s see how we can define <a href="../task-inputs">task inputs</a>.</p>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-05 19:40:23 -04:00
+Last updated 2016-06-05 21:04:06 -04:00
 </div>
 </div>
 </body>
