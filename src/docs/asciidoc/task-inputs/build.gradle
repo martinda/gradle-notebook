@@ -1,0 +1,22 @@
+// tag::all[]
+class MyTask extends DefaultTask { // <1>
+
+    @InputFile
+    File inputFile
+
+    @TaskAction
+    void run() {
+        println("Done")
+    }
+}
+
+task myTask1(type: MyTask) { // <2>
+    inputFile file('build.gradle')
+}
+
+task myTask2(type: MyTask) { // <3>
+    doLast {
+        println("Done done.")
+    }
+}
+// tag::all[]

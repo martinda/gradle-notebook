@@ -1,1 +1,21 @@
 = Task with inputs
+
+In GNU Make, the inputs to a rule are the pre-requisites. When the
+pre-requisites timestamp becomes younger than the target's, GNU Make
+will re-run the recipe to regenerate the target file. If the inputs
+change but the target remains younger than all its pre-requisites, GNU
+Make will not re-run rebuild the target, eventhough it may be out of sync
+with the pre-requisites. In practice, this does not cause problems often.
+
+In Gradle, task inputs are not limited to files. Task inputs can be file
+names, file content, directory names or content, strings, etc.
+
+Let's start with a simple task with one input file:
+
+[source,groovy,linenums]
+----
+include::build.gradle[tags=all]
+----
+<1> We define `MyTask` as an extension of the `DefaultTask`
+<2> We create an instance of the task with one input file
+<3> We create an instance of the task without no input file
