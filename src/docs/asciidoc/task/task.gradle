@@ -1,0 +1,7 @@
+// tag::all[]
+task myTask() {
+    doLast {
+        println("Done")
+    }
+}
+// tag::all[]
