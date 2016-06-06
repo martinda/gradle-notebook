@@ -19,7 +19,6 @@ build/
 *.iws
 .gradle/
 atlassian-ide-plugin.xml
-index.adoc
 *~
 *.swp
 Session.vim

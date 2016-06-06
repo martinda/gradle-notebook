@@ -1,0 +1,47 @@
+= Task
+
+If you come from a GNU Make background and you want to get started with Gradle, the first thing that comes to mind is the following diagram:
+
+----
+
+                   +----------+
+pre-requisites --> + commands +--> target
+(the inputs)       +----------+    (the outputs)
+
+----
+
+Or expressed as a GNU Make rule:
+
+[source,makefile,linenums]
+----
+target: pre-requisites
+	command
+	command
+	...
+----
+
+In GNU Make, the target is preferably and is usually a file. The pre-requisites is a list of files, and the commands are the recipe for creating the target. The whole rigmarole is called a link:https://www.gnu.org/software/make/manual/html_node/Rule-Example.html#Rule-Example[GNU Make rule].
+
+In Gradle, rules translate to tasks. But Gradle tasks are more flexible than GNU Make rules. A simple task in Gradle looks like so:
+
+[source,groovy,linenums]
+----
+task myTask() {
+    doLast {
+        command
+        command
+        ...
+    }
+}
+----
+
+Let's implement a task that prints to the terminal:
+
+[source,groovy,linenums]
+----
+include::task.gradle[tags=all]
+----
+
+And we run the task with `gradle myTask`. You can run this task over and over, Gradle will never grow tired of running it. It is much like a link:https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html[`PHONY` target in GNU Make].
+
+Next, let's see how we can define link:../task-inputs[task inputs].

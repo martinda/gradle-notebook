@@ -1,0 +1,17 @@
+= Gradle Notebook
+Martin d'Anjou <martin.danjou14@gmail.com>
+2016-06-05
+:revnumber: {project-version}
+:example-caption!:
+
+== Introduction
+
+I sometimes write notes on what I do. Here are some Gradle notes.
+
+== Tasks
+
+* link:task[Task without inputs or outputs]
+* link:task-inputs[Task with inputs only]
+* link:task-outputs[Task with outputs only]
+* link:task-inputs-outputs[Task with inputs and outputs]
+
