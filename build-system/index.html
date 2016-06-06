@@ -5,8 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<meta name="author" content="Martin d'Anjou">
-<title>Gradle Notebook</title>
+<title>Software Build Systems</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -510,65 +509,93 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Gradle Notebook</h1>
-<div class="details">
-<span id="author" class="author">Martin d'Anjou</span><br>
-<span id="email" class="email"><a href="mailto:martin.danjou14@gmail.com">martin.danjou14@gmail.com</a></span><br>
-<span id="revnumber">version 1.0.0-SNAPSHOT,</span>
-<span id="revdate">2016-06-05</span>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#tasks">Tasks</a></li>
-</ul>
-</div>
+<h1>Software Build Systems</h1>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="introduction">Introduction</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>I sometimes write notes on what I do. Here are some notes on Gradle.</p>
+<p>Here is a simple representation of a software build system:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>                +---------------+
+input files --&gt; + build process + --&gt; output files
+                +---------------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The build process can contain other build processes, and this can grow quite large:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>                +---------------+
+input files --&gt; + build process + --. <i class="conum" data-value="1"></i><b>(1)</b>
+                +---------------+   |         +---------------+
+                                    +--------&gt;+ build process +--&gt; output files
+                +---------------+   |         +---------------+
+input files --&gt; + build process + --' <i class="conum" data-value="2"></i><b>(2)</b>
+                +---------------+</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Intermediate output files</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Intermediate output files</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This can grow and fork in all kinds of directions depending on your domain. Not only can you
+use a build process to create files, but it can also be used to run tests.</p>
+</div>
+<div class="paragraph">
+<p>The characteristics of a traditional software build system are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Introduction: <a href="build-system">Software build system definition</a></p>
+<p>It can build files</p>
+</li>
+<li>
+<p>It can run processes in parallel</p>
+</li>
+<li>
+<p>It can chain build processes together (toolchains)</p>
+</li>
+<li>
+<p>It can detect changes in pre-requisites and build incrementally</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Tools like GNU Make and Ant fall in this category.</p>
 </div>
+<div class="paragraph">
+<p>More modern build systems can also:</p>
 </div>
-<div class="sect1">
-<h2 id="tasks">Tasks</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><a href="task">Task without inputs or outputs</a></p>
+<p>Fetch dependencies from a repository of pre-build artifacts</p>
 </li>
 <li>
-<p><a href="task-inputs">Task with inputs only</a></p>
-</li>
-<li>
-<p><a href="task-outputs">Task with outputs only</a></p>
-</li>
-<li>
-<p><a href="task-inputs-outputs">Task with inputs and outputs</a></p>
+<p>Publish output products to a repository for use by others</p>
 </li>
 </ul>
 </div>
-</div>
+<div class="paragraph">
+<p>Tools like Ivy+Ant, Maven and Gradle fall in this category.</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0-SNAPSHOT<br>
-Last updated 2016-06-05 21:26:18 -04:00
+Last updated 2016-06-05 21:23:19 -04:00
 </div>
 </div>
 </body>

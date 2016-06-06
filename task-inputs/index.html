@@ -514,11 +514,88 @@ table.CodeRay td.code>pre{padding:0}
 <h1>Task with inputs</h1>
 </div>
 <div id="content">
+<div class="paragraph">
+<p>In GNU Make, the inputs to a rule are the pre-requisites. When the
+pre-requisites timestamp becomes younger than the target&#8217;s, GNU Make
+will re-run the recipe to regenerate the target file. If the inputs
+change but the target remains younger than all its pre-requisites, GNU
+Make will not re-run rebuild the target, eventhough it may be out of sync
+with the pre-requisites. In practice, this does not cause problems often.</p>
+</div>
+<div class="paragraph">
+<p>In Gradle, task inputs are not limited to files. Task inputs can be file
+names, file content, directory names or content, strings, etc.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s start with a simple task with one input file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="type">class</span> <span class="class">MyTask</span> <span class="directive">extends</span> DefaultTask { <i class="conum" data-value="1"></i><b>(1)</b>
 
+    <span class="annotation">@InputFile</span>
+    <span class="predefined-type">File</span> inputFile
+
+    <span class="annotation">@TaskAction</span>
+    <span class="type">void</span> run() {
+        println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Done</span><span class="delimiter">&quot;</span></span>)
+    }
+}
+
+task myTask1(<span class="key">type</span>: MyTask) { <i class="conum" data-value="2"></i><b>(2)</b>
+    inputFile file(<span class="string"><span class="delimiter">'</span><span class="content">build.gradle</span><span class="delimiter">'</span></span>)
+}
+
+task myTask2(<span class="key">type</span>: MyTask) { <i class="conum" data-value="3"></i><b>(3)</b>
+    doLast {
+        println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Done done.</span><span class="delimiter">&quot;</span></span>)
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We define <code>MyTask</code> as an extension of the <code>DefaultTask</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We create an instance of the task with one input file</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We create an instance of the task without no input file</td>
+</tr>
+</table>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-05 19:40:37 -04:00
+Last updated 2016-06-05 21:43:41 -04:00
 </div>
 </div>
 </body>
